@@ -1,0 +1,30 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('appointments', function (Blueprint $table) {
+            $table->enum('status', [0, 1, 2, 3, 4])
+            ->comment('0 = "Query Booked", 1 = "Pending", 2 = "Assigned", 3 = "Hold", 4 = "Completed"')
+            ->change();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('appointments', function (Blueprint $table) {
+            $table->string('status')->change();
+        });
+    }
+};

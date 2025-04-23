@@ -1,0 +1,27 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "@popperjs/core": "^2.11.6",
+        "@vitejs/plugin-react": "^4.2.0",
+        "@vitejs/plugin-vue": "^5.2.3",
+        "autoprefixer": "^10.4.21",
+        "axios": "^1.6.4",
+        "bootstrap": "^5.3.5",
+        "laravel-vite-plugin": "^1.0",
+        "postcss": "^8.5.3",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "sass": "^1.86.3",
+        "tailwindcss": "^4.1.4",
+        "vite": "^5.0"
+    },
+    "dependencies": {
+        "laravel-mix": "^6.0.49",
+        "vue-loader": "^17.4.2"
+    }
+}
