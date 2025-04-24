@@ -14,7 +14,11 @@ class LeadController extends Controller
      public function LeadIndex(){
 
         $leads = LeadModel::latest()->get();
-        return view('Lead.lead',compact('leads'));
+        $totalLeads = LeadModel::count();
+        // dd($totalLeads);
+        return view('Lead.lead',compact('leads',
+            'totalLeads'
+        ));
      }
      public function LeadCreate(Request $request)
      {

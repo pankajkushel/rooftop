@@ -217,7 +217,8 @@ Route::post('/coustomers/post', [MyCoustomer::class, 'createCoustomer'])->name('
 Route::get('/coustomer/edit/{id}', [MyCoustomer::class, 'CoustomerEdit'])->name('coustomerEdit');
 Route::put('/coustomer/update/{id}', [MyCoustomer::class, 'CoustomerUpdate'])->name('coustomerUpdate');
 Route::post('/leads/{id}/convert', [leadCustomer::class, 'convert'])->name('leads.convert');
-Route::get('/lead/customers', [leadCustomer::class, 'customerList'])->name('lead.customers');
+Route::get('/customers', [leadCustomer::class, 'customerList'])->name('lead.customers');
+Route::get('/customer/details/{id}', [leadCustomer::class, 'getCustomerDetails']);
 
 Route::get('/assigned-works/create', [AssignedController::class, 'WorkAssign'])->name('assignedworks.create');
 Route::post('/assigned-works', [AssignedController::class, 'store'])->name('assignedworks.store');

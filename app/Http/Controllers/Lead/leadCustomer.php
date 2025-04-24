@@ -41,9 +41,10 @@ class leadCustomer extends Controller
         // Password generate karo
         $password = Str::random(8);
 
-      
+    //   dd($lead->id);
         $user = User::create([
             'name' => $lead->full_name, 
+            'lead_id' => $lead->id,  // Lead ka email
             'email' => $email,  // Lead ka email
             'password' => Hash::make($password),  
             'is_customer' => true, 
@@ -69,10 +70,28 @@ class leadCustomer extends Controller
         $customerdata = LeadModel::join('users', 'lead_models.email', '=', 'users.email')
                          ->select('lead_models.*', 'users.id as user_id', 'users.name as user_name')
                          ->get();
-    
-        return view('Coustomer.coustomer', compact('customerdata'));
+        $totalCustomer = LeadModel::join('users', 'lead_models.email', '=', 'users.email')
+        ->select('lead_models.*', 'users.id as user_id', 'users.name as user_name')
+        ->count();                 
+        // $totalCustomer = User::count();
+        return view('Coustomer.coustomer', compact('customerdata','totalCustomer'));
     }
     
-
+    public function getCustomerDetails($id)
+    {
+        $customer = User::where('lead_id',$id)->first();
+        // dd($customer);
+        if ($customer) {
+            return response()->json([
+                'status' => 'success',
+                'data' => $customer
+            ]);
+        }
+    
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Customer not found.'
+        ], 404);
+    }
 
 }

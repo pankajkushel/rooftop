@@ -104,9 +104,9 @@
                 @endif
                 @if (Auth::user()->getRoleNames()[0] == 'Admin')
                     <li class="{{ request()->is('dashboard') ? 'active' : '' }}"><a href="{{ route('super.admin.dashboard') }}"><i class="bi bi-house"></i><span class="text">Dashboard</span></a></li>
-                    <li class="{{ request()->is('leadIndex') ? 'active' : '' }}"><a href="{{ route('leadIndex') }}"><i class="fa-solid fa-users"></i><span class="text">My Lead</span></a></li>
-                    <li class="{{ request()->is('franchise_approval') ? 'active' : '' }}"><a href="{{ route('lead.customers') }}"><i class="fa-solid fa-users"></i><span class="text">Coustomer</span></a></li>
-                    <li class="{{ request()->is('franchise_approval') ? 'active' : '' }}"><a href="{{ route('assignedworks.create') }}"><i class="fa-solid fa-users"></i><span class="text">Work Assigned</span></a></li>
+                    <li class="{{ request()->is('leadIndex') ? 'active' : '' }}"><a href="{{ route('leadIndex') }}"><i class="bi bi-magnet"></i><span class="text">My Lead</span></a></li>
+                    <li class="{{ Route::is('lead.customers') ? 'active' : '' }}"><a href="{{ route('lead.customers') }}"><i class="bi bi-person"></i><span class="text">Customer</span></a></li>
+                    <li class="{{ request()->is('franchise_approval') ? 'active' : '' }}"><a href="{{ route('assignedworks.create') }}"><i class="bi bi-clipboard-check"></i><span class="text">Work Assigned</span></a></li>
                     <li class="{{ request()->is('franchise_approval') ? 'active' : '' }}"><a href="{{ route('franchise.temp.index') }}"><i class="bi bi-building-add"></i><span class="text">Franchise</span></a></li>
                     <li class="{{ request()->is('products') ? 'active' : '' }}"><a href="/products"><i class="bi bi-box2"></i><span class="text">Products</span></a></li>
                     <li class="{{ request()->is('appointments_list') ? 'active' : '' }}"><a href="{{ route('appointments.list.index') }}"><i class="bi bi-journal"></i></i><span class="text">Appointments</span></a></li>
