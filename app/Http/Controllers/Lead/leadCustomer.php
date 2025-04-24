@@ -79,7 +79,8 @@ class leadCustomer extends Controller
     
     public function getCustomerDetails($id)
     {
-        $customer = User::where('lead_id',$id)->first();
+        // $customer = User::where('lead_id',$id)->first();
+        $customer = LeadModel::with('user')->find($id);
         // dd($customer);
         if ($customer) {
             return response()->json([

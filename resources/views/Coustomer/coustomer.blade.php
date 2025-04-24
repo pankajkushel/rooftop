@@ -47,16 +47,15 @@
                         <td>{{ \Illuminate\Support\Str::words($customers->address, 5, '...') }}</td>
                        
                        
-                        <td>{{$customers->registration_date}}</td>
+                        <td>{{$customers->assigned_to || 'N/A' }}</td>
                         <td>
                         <div class="dropdown">
                                 <i class="bi bi-three-dots-vertical" type="button" data-bs-toggle="dropdown"
                                     aria-expanded="false"></i>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item small"
-                                            href="">Edit</a></li>
+                                    
                                     <li>
-                                        <a class="dropdown-item small viewProductLink" id="open-customer-details-{{ $customers->id }}" data-id="{{ $customers->id }}">
+                                        <a href="javascript::void(0)" class="dropdown-item small viewProductLink" id="open-customer-details-{{ $customers->id }}" data-id="{{ $customers->id }}">
                                             View
                                         </a>
                                     </li>
@@ -170,7 +169,7 @@
     $(document).ready(function () {
         $(document).on('click', '[id^="open-customer-details-"]', function () {
             var customerId = $(this).data('id');
-            alert(customerId    );
+           
             $.ajax({
                 url: '/customer/details/' + customerId,
                 method: 'GET',
@@ -184,9 +183,6 @@
                             <tr><th>Email</th><td>${customer.email || 'N/A'}</td></tr>
                             <tr><th>Phone</th><td>${customer.phone || 'N/A'}</td></tr>
                             <tr><th>Address</th><td>${customer.address || 'N/A'}</td></tr>
-                            <tr><th>City</th><td>${customer.city || 'N/A'}</td></tr>
-                            <tr><th>State</th><td>${customer.state || 'N/A'}</td></tr>
-                            <tr><th>Country</th><td>${customer.country || 'N/A'}</td></tr>
                         `);
 
                         $('#CustomerView').offcanvas('show');

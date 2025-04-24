@@ -133,8 +133,26 @@ class RegisterController extends Controller
 
     }
 
+    // public function user_list(){
+    //     $users = User::all();
+
+    //     return view('admin.user.index', compact('users'));
+    // }
+
     public function user_list(){
-        $users = User::all();
+        
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'Please login to access this page.');
+        }
+
+        $userRole = Auth::user()->getRoleNames()->first();
+
+        $allowedRoles = ['Super Admin'];
+        if (!in_array($userRole, $allowedRoles)) {
+            return redirect()->route('login')->with('error', 'You do not have permission to access this page.');
+        }
+
+        $users = User::orderBy('id', 'DESC')->get();
 
         return view('admin.user.index', compact('users'));
     }

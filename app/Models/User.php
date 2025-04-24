@@ -46,4 +46,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function lead()
+    {
+        return $this->belongsTo(\App\Models\Lead\LeadModel::class, 'lead_id', 'id');
+    }
 }

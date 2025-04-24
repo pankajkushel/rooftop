@@ -20,4 +20,9 @@ class LeadModel extends Model
         'created_by',
         'is_converted'
     ];
+
+    public function user()
+    {
+        return $this->hasOne(\App\Models\User::class, 'lead_id', 'id');
+    }
 }
